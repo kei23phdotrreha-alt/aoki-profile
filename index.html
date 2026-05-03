@@ -1,1 +1,552 @@
 
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>青木啓一郎 | Keiichiro Aoki</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #1E2761;
+    --navy-deep: #141a45;
+    --navy-mid: #2a3580;
+    --gold: #C9A84C;
+    --gold-light: #e0c06e;
+    --gold-pale: #f5e8c0;
+    --cream: #faf8f3;
+    --white: #ffffff;
+    --text-dark: #1a1a2e;
+    --text-mid: #3a3a5c;
+    --text-muted: #7a7a9a;
+  }
+
+  html, body {
+    min-height: 100%;
+    background: var(--navy-deep);
+    font-family: 'Noto Sans JP', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background: linear-gradient(160deg, #1E2761 0%, #141a45 50%, #0d1230 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .page {
+    width: 100%;
+    max-width: 480px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 48px 24px 60px;
+    position: relative;
+  }
+
+  /* Gold geometric accent */
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  /* Profile section */
+  .profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .avatar-wrap {
+    position: relative;
+    margin-bottom: 20px;
+  }
+
+  .avatar-ring {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    padding: 2.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .avatar-inner {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: var(--navy-mid);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+
+  .avatar-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .name-en {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.12em;
+    margin-bottom: 6px;
+  }
+
+  .name-ja {
+    font-size: 13px;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    margin-bottom: 14px;
+    font-weight: 300;
+  }
+
+  .credentials {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    margin-bottom: 18px;
+  }
+
+  .cred-item {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.05em;
+    font-weight: 300;
+  }
+
+  .tagline {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.8;
+    letter-spacing: 0.03em;
+    border-top: 1px solid rgba(201,168,76,0.3);
+    border-bottom: 1px solid rgba(201,168,76,0.3);
+    padding: 14px 16px;
+    font-weight: 300;
+    max-width: 320px;
+  }
+
+  /* SNS icons */
+  .sns-row {
+    display: flex;
+    gap: 16px;
+    margin-top: 18px;
+    margin-bottom: 4px;
+  }
+
+  .sns-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgba(201,168,76,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+    cursor: pointer;
+  }
+
+  .sns-btn:hover {
+    border-color: var(--gold);
+    background: rgba(201,168,76,0.1);
+  }
+
+  .sns-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: rgba(255,255,255,0.7);
+    pointer-events: none;
+  }
+
+  .sns-btn * { pointer-events: none; }
+
+  /* Section label */
+  .section-label {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    margin-top: 8px;
+  }
+
+  .section-label span {
+    font-size: 10px;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(201,168,76,0.25);
+  }
+
+  /* Link buttons */
+  .links {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .link-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: transform 0.15s, background 0.15s;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .link-btn::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+  }
+
+  .link-btn:active { transform: scale(0.98); }
+
+  /* Primary - gold accent */
+  .link-primary {
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.35);
+  }
+
+  .link-primary::before { background: var(--gold); }
+
+  .link-primary:hover {
+    background: rgba(201,168,76,0.2);
+    border-color: rgba(201,168,76,0.6);
+  }
+
+  /* Secondary - subtle */
+  .link-secondary {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+
+  .link-secondary::before { background: rgba(255,255,255,0.3); }
+
+  .link-secondary:hover {
+    background: rgba(255,255,255,0.09);
+    border-color: rgba(255,255,255,0.22);
+  }
+
+  .link-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .link-label-en {
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    font-weight: 500;
+  }
+
+  .link-primary .link-label-en { color: var(--gold-light); }
+  .link-secondary .link-label-en { color: rgba(255,255,255,0.45); }
+
+  .link-label-ja {
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+  }
+
+  .link-primary .link-label-ja { color: var(--white); }
+  .link-secondary .link-label-ja { color: rgba(255,255,255,0.85); }
+
+  .link-arrow {
+    color: rgba(255,255,255,0.35);
+    font-size: 18px;
+    font-weight: 300;
+  }
+
+  .link-primary .link-arrow { color: var(--gold); }
+
+  /* Contact section */
+  .contact-section {
+    width: 100%;
+    margin-top: 32px;
+    padding: 24px 20px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .contact-heading {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+
+  .contact-text {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.9;
+    letter-spacing: 0.03em;
+    font-weight: 300;
+    margin-bottom: 16px;
+  }
+
+  .contact-btn {
+    display: block;
+    width: 100%;
+    padding: 13px;
+    border-radius: 8px;
+    background: transparent;
+    border: 1px solid rgba(201,168,76,0.4);
+    color: var(--gold-light);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Noto Sans JP', sans-serif;
+    transition: background 0.2s, border-color 0.2s;
+    cursor: pointer;
+  }
+
+  .contact-btn:hover {
+    background: rgba(201,168,76,0.1);
+    border-color: var(--gold);
+  }
+
+  /* Footer */
+  .footer {
+    margin-top: 40px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.2);
+    letter-spacing: 0.15em;
+    text-align: center;
+  }
+
+  /* Entry animation */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .profile { animation: fadeUp 0.6s ease both; }
+  .links .link-btn:nth-child(1) { animation: fadeUp 0.6s 0.1s ease both; }
+  .links .link-btn:nth-child(2) { animation: fadeUp 0.6s 0.15s ease both; }
+  .links .link-btn:nth-child(3) { animation: fadeUp 0.6s 0.2s ease both; }
+  .links .link-btn:nth-child(4) { animation: fadeUp 0.6s 0.25s ease both; }
+  .links .link-btn:nth-child(5) { animation: fadeUp 0.6s 0.3s ease both; }
+  .links .link-btn:nth-child(6) { animation: fadeUp 0.6s 0.35s ease both; }
+  .contact-section { animation: fadeUp 0.6s 0.35s ease both; }
+
+  /* LINE CTA hero button */
+  .line-cta {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(6,199,85,0.15), rgba(6,199,85,0.08));
+    border: 1.5px solid rgba(6,199,85,0.5);
+    padding: 20px 20px;
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    animation: fadeUp 0.6s 0.08s ease both;
+  }
+
+  .line-cta:hover {
+    background: linear-gradient(135deg, rgba(6,199,85,0.22), rgba(6,199,85,0.12));
+    border-color: rgba(6,199,85,0.75);
+  }
+
+  .line-cta:active { transform: scale(0.98); }
+
+  .line-cta-inner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .line-icon {
+    width: 36px;
+    height: 36px;
+    color: #06C755;
+    flex-shrink: 0;
+  }
+
+  .line-cta-text {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+  }
+
+  .line-cta-label {
+    font-size: 15px;
+    font-weight: 500;
+    color: #ffffff;
+    letter-spacing: 0.04em;
+  }
+
+  .line-cta-sub {
+    font-size: 11.5px;
+    color: rgba(255,255,255,0.55);
+    letter-spacing: 0.03em;
+    font-weight: 300;
+  }
+
+  .line-cta-arrow {
+    color: #06C755;
+    font-size: 20px;
+    font-weight: 300;
+    flex-shrink: 0;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Profile -->
+  <div class="profile">
+    <div class="avatar-wrap">
+      <div class="avatar-ring">
+        <div class="avatar-inner"><img src="data:image/jpeg;base64,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" alt="青木啓一郎" style="width:100%;height:100%;object-fit:cover;object-position:center top;"></div>
+      </div>
+    </div>
+
+    <p class="name-en">KEIICHIRO AOKI</p>
+    <p class="name-ja">青木 啓一郎</p>
+
+    <div class="credentials">
+      <span class="cred-item">博士（保健医療学）｜大学教員（准教授）</span>
+      <span class="cred-item">専門作業療法士（脳血管障害）｜認定作業療法士</span>
+    </div>
+
+    <p class="tagline">
+      皆が臨床で明日へ一歩進めるために<br>
+      卒後教育セミナーに力を入れております
+    </p>
+
+    <div class="sns-row">
+      <!-- X / Twitter -->
+      <a class="sns-btn" href="https://x.com/aoki_phd_ot?s=21&t=b8jlucG_5_sqQzTBTRWy9w" target="_blank" rel="noopener" aria-label="X">
+        <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.261 5.636 5.903-5.636zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+      </a>
+      <!-- Instagram -->
+      <a class="sns-btn" href="https://instagram.com/keiichiro_aoki_ot?r=nametag" target="_blank" rel="noopener" aria-label="Instagram">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      </a>
+      <!-- note -->
+      <a class="sns-btn" href="https://note.com/ot_k" target="_blank" rel="noopener" aria-label="note">
+        <svg viewBox="0 0 24 24"><path d="M3 3h18v18H3V3zm2 2v14h14V5H5zm3 3h8v2H8V8zm0 4h8v2H8v-2zm0 4h5v2H8v-2z"/></svg>
+      </a>
+      <!-- LinkedIn -->
+      <a class="sns-btn" href="https://www.linkedin.com/in/keiichiro-aoki-b9530324b?utm_source=share_via&utm_content=profile&utm_medium=member_ios" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+    </div>
+  </div>
+
+  <!-- LINE CTA - hero -->
+  <a class="line-cta" href="https://line.me/R/ti/p/@see4075x" target="_blank" rel="noopener">
+    <div class="line-cta-inner">
+      <svg class="line-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+      <div class="line-cta-text">
+        <span class="line-cta-label">公式LINE 無料登録</span>
+        <span class="line-cta-sub">セミナー情報・臨床のヒントを定期配信</span>
+      </div>
+      <span class="line-cta-arrow">→</span>
+    </div>
+  </a>
+
+  <!-- Other links -->
+  <div class="section-label" style="margin-top:28px;"><span>LINKS</span></div>
+
+  <div class="links">
+    <a class="link-btn link-primary" href="https://www.shinreha.com" target="_blank" rel="noopener">
+      <div class="link-content">
+        <span class="link-label-en">SEMINAR</span>
+        <span class="link-label-ja">卒後教育セミナー【進リハの集い】</span>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+
+    <a class="link-btn link-secondary" href="https://www.rehabilisquare.com" target="_blank" rel="noopener">
+      <div class="link-content">
+        <span class="link-label-en">ONLINE LEARNING</span>
+        <span class="link-label-ja">リハビリスクエア</span>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+
+    <a class="link-btn link-secondary" href="https://note.com/ot_k" target="_blank" rel="noopener">
+      <div class="link-content">
+        <span class="link-label-en">NOTE</span>
+        <span class="link-label-ja">日々の発信・有料記事</span>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+
+    <a class="link-btn link-secondary" href="https://researchmap.jp/Aoki.K/" target="_blank" rel="noopener">
+      <div class="link-content">
+        <span class="link-label-en">WORK</span>
+        <span class="link-label-ja">活動実績・研究業績</span>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+
+    <a class="link-btn link-secondary" href="https://amzn.asia/d/05NXpHe2" target="_blank" rel="noopener">
+      <div class="link-content">
+        <span class="link-label-en">BOOKS</span>
+        <span class="link-label-ja">著書</span>
+      </div>
+      <span class="link-arrow">→</span>
+    </a>
+  </div>
+
+  <!-- Contact -->
+  <div class="contact-section">
+    <p class="contact-heading">Contact</p>
+    <p class="contact-text">
+      作業療法・教育・研究に関するご相談、<br>
+      講演・執筆・共同研究のご依頼など、<br>
+      お気軽にご連絡ください。
+    </p>
+    <a class="contact-btn" href="mailto:shin.reha.tudoi@gmail.com">メールで問い合わせる</a>
+  </div>
+
+  <p class="footer">© KEIICHIRO AOKI</p>
+</div>
+</body>
+</html>
